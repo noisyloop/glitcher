@@ -56,10 +56,10 @@ body {
   letter-spacing: 1px;
 }
 
-/* ---- main grid layout ---- */
+/* ---- main grid layout: SOURCE 25% | OUTPUT 40% | SLIDERS 35% ---- */
 .layout {
   display: grid;
-  grid-template-columns: 30% 70%;
+  grid-template-columns: 25% 40% 35%;
   gap: 0;
   min-height: 0;
 }
@@ -74,8 +74,9 @@ body {
   min-height: 0;
   box-shadow: 0 0 18px #000 inset, 0 0 0 1px #0c1f0c;
 }
-.panel-left { margin-right: 5px; }
-.panel-right { margin-left: 5px; }
+.panel-source   { margin-right: 5px; }
+.panel-output   { margin-left: 5px; margin-right: 5px; }
+.panel-controls { margin-left: 5px; padding: 12px 10px; }
 
 .panel-title {
   margin: 0 0 10px;
@@ -129,19 +130,25 @@ body {
   padding: 6px;
   display: flex;
   flex-direction: column;
+  align-items: center;        /* center canvas horizontally */
+  justify-content: center;    /* center canvas vertically in the column */
   flex: 1;
   min-height: 0;
+  position: relative;
 }
 .preview-label {
   font-size: 10px;
   letter-spacing: 2px;
   color: var(--fg-dim);
   margin-bottom: 4px;
+  align-self: flex-start;     /* keep the label pinned top-left */
 }
+/* canvas fills the column width; height scales to the image aspect ratio,
+   capped to the column height (letterboxed via object-fit when very tall). */
 .preview-canvas {
-  flex: 1;
-  min-height: 0;
   width: 100%;
+  height: auto;
+  max-height: 100%;
   object-fit: contain;
   image-rendering: pixelated;
   display: block;
@@ -160,7 +167,7 @@ body {
 
 .controls-scroll {
   overflow-y: auto;
-  padding-right: 8px;
+  padding-right: 6px;
   flex: 1;
   min-height: 0;
 }
@@ -195,8 +202,8 @@ body {
   display: grid;
   grid-template-columns: 1fr;
   gap: 3px;
-  margin-bottom: 9px;
-  padding: 4px 6px;
+  margin-bottom: 7px;
+  padding: 3px 5px;
   border: 1px solid transparent;
 }
 .ctrl:hover { border-color: var(--border); background: #0a0d0a; }
@@ -263,6 +270,15 @@ input[type="checkbox"]:checked {
   box-shadow: 0 0 8px var(--accent);
 }
 
-@media (max-width: 760px) {
-  .layout { grid-template-columns: 1fr; grid-template-rows: auto 1fr; }
+/* ---- responsive: stack into one column below 900px ---- */
+@media (max-width: 900px) {
+  body { overflow: auto; height: auto; min-height: 100vh; }
+  .layout {
+    grid-template-columns: 1fr;
+    grid-auto-rows: auto;
+  }
+  /* output first (large), then source, then sliders */
+  .panel-output   { order: 1; min-height: 60vh; margin: 10px; }
+  .panel-source   { order: 2; min-height: 40vh; margin: 10px; }
+  .panel-controls { order: 3; margin: 10px; }
 }
