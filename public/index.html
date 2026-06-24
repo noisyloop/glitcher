@@ -15,8 +15,8 @@
   </header>
 
   <main class="layout">
-    <!-- LEFT PANEL: source / IO -->
-    <section class="panel panel-left">
+    <!-- COLUMN 1: source / IO -->
+    <section class="panel panel-source">
       <h2 class="panel-title">SOURCE</h2>
 
       <div class="io-row">
@@ -31,18 +31,23 @@
         <div class="preview-label">ORIGINAL</div>
         <canvas id="originalCanvas" class="preview-canvas"></canvas>
       </div>
+    </section>
 
-      <div class="preview-box">
+    <!-- COLUMN 2: output (hero) -->
+    <section class="panel panel-output">
+      <h2 class="panel-title">OUTPUT</h2>
+      <div class="preview-box preview-box-hero">
         <div class="preview-label">OUTPUT</div>
         <canvas id="outputCanvas" class="preview-canvas"></canvas>
       </div>
     </section>
 
-    <!-- RIGHT PANEL: controls -->
-    <section class="panel panel-right">
+    <!-- COLUMN 3: controls -->
+    <section class="panel panel-controls">
       <div class="controls-head">
         <h2 class="panel-title">EFFECTS</h2>
         <div class="controls-actions">
+          <button class="btn btn-sm" id="recordBtn">▶ RECORD GLITCH</button>
           <button class="btn btn-sm" id="randomizeBtn">⚄ RANDOMIZE ALL</button>
           <button class="btn btn-sm" id="resetBtn">⟲ RESET ALL</button>
         </div>
