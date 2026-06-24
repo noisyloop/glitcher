@@ -31,13 +31,21 @@ in a pipeline; any slider at its neutral position is a no-op (kept fast).
 
 ## Architecture
 
+Modular ES modules under `public/js/`, with `config/effects.json` as the single
+source of truth for what effects exist (id, label, group, range, neutral value).
+
 | File | Role |
 |------|------|
 | `server.js` | Minimal Express static server with strict CSP + security headers. |
 | `public/index.html` | Two-panel CSS-grid layout. |
 | `public/style.css` | Phosphor-green-on-black terminal theme. |
-| `public/glitch.js` | One exported function per effect: `(imageData, value, …) => ImageData`. |
-| `public/main.js` | Builds the UI, runs the pipeline, handles import/export. |
+| `public/config/effects.json` | Slider/effect definitions — single source of truth. |
+| `public/js/main.js` | Entry point — wires UI + pipeline + IO together. |
+| `public/js/config.js` | Loads `effects.json` and exposes it to ui + pipeline. |
+| `public/js/pipeline.js` | `runPipeline(source, values)` — applies effects in order, skipping neutrals. |
+| `public/js/ui.js` | Slider rendering, value tracking, Randomize/Reset. Knows nothing about Canvas. |
+| `public/js/io.js` | Hardened image import, source/output canvases, PNG export. Knows nothing about sliders. |
+| `public/js/effects/*.js` | One file per category; one exported function per effect. `index.js` re-exports a flat map. |
 
 ## Security notes
 

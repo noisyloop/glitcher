@@ -1,0 +1,47 @@
+[
+  { "id": "pixelate", "label": "pixelate", "group": "Pixel / Color", "min": 1, "max": 64, "step": 1, "default": 1, "neutral": 1 },
+  { "id": "bitcrush", "label": "bitcrush (bits)", "group": "Pixel / Color", "min": 1, "max": 8, "step": 1, "default": 8, "neutral": 8 },
+  { "id": "channel_shift_r", "label": "channel_shift_r", "group": "Pixel / Color", "min": -100, "max": 100, "step": 1, "default": 0, "neutral": 0 },
+  { "id": "channel_shift_g", "label": "channel_shift_g", "group": "Pixel / Color", "min": -100, "max": 100, "step": 1, "default": 0, "neutral": 0 },
+  { "id": "channel_shift_b", "label": "channel_shift_b", "group": "Pixel / Color", "min": -100, "max": 100, "step": 1, "default": 0, "neutral": 0 },
+  { "id": "hue_rotate", "label": "hue_rotate (°)", "group": "Pixel / Color", "min": 0, "max": 360, "step": 1, "default": 0, "neutral": 0 },
+  { "id": "saturation", "label": "saturation", "group": "Pixel / Color", "min": 0, "max": 3, "step": 0.01, "default": 1, "neutral": 1 },
+  { "id": "invert", "label": "invert", "group": "Pixel / Color", "min": 0, "max": 1, "step": 0.01, "default": 0, "neutral": 0 },
+  { "id": "threshold", "label": "threshold", "group": "Pixel / Color", "min": 0, "max": 255, "step": 1, "default": 0, "neutral": 0 },
+
+  { "id": "scanlines", "label": "scanlines", "group": "Scan / Raster", "min": 0, "max": 1, "step": 0.01, "default": 0, "neutral": 0 },
+  { "id": "scanline_gap", "label": "scanline_gap (px)", "group": "Scan / Raster", "min": 1, "max": 20, "step": 1, "default": 2, "neutral": 2, "param": true },
+  { "id": "interlace", "label": "interlace (px)", "group": "Scan / Raster", "min": 0, "max": 80, "step": 1, "default": 0, "neutral": 0 },
+  { "id": "crt_curve", "label": "crt_curve", "group": "Scan / Raster", "min": 0, "max": 1, "step": 0.01, "default": 0, "neutral": 0 },
+  { "id": "phosphor_blur", "label": "phosphor_blur (px)", "group": "Scan / Raster", "min": 0, "max": 10, "step": 1, "default": 0, "neutral": 0 },
+
+  { "id": "slice_shift", "label": "slice_shift", "group": "Glitch / Corruption", "min": 0, "max": 1, "step": 0.01, "default": 0, "neutral": 0 },
+  { "id": "slice_count", "label": "slice_count", "group": "Glitch / Corruption", "min": 1, "max": 60, "step": 1, "default": 12, "neutral": 12, "param": true },
+  { "id": "block_displacement", "label": "block_displacement", "group": "Glitch / Corruption", "min": 0, "max": 1, "step": 0.01, "default": 0, "neutral": 0 },
+  { "id": "noise_amount", "label": "noise_amount", "group": "Glitch / Corruption", "min": 0, "max": 1, "step": 0.01, "default": 0, "neutral": 0 },
+  { "id": "jpeg_artifact", "label": "jpeg_artifact", "group": "Glitch / Corruption", "min": 0, "max": 1, "step": 0.01, "default": 0, "neutral": 0 },
+  { "id": "row_shift_chaos", "label": "row_shift_chaos (px)", "group": "Glitch / Corruption", "min": 0, "max": 80, "step": 1, "default": 0, "neutral": 0 },
+  { "id": "data_bend", "label": "data_bend", "group": "Glitch / Corruption", "min": 0, "max": 1, "step": 0.01, "default": 0, "neutral": 0 },
+  { "id": "ghost", "label": "ghost (opacity)", "group": "Glitch / Corruption", "min": 0, "max": 1, "step": 0.01, "default": 0, "neutral": 0 },
+  { "id": "ghost_x", "label": "ghost_x (px)", "group": "Glitch / Corruption", "min": -100, "max": 100, "step": 1, "default": 8, "neutral": 8, "param": true },
+  { "id": "ghost_y", "label": "ghost_y (px)", "group": "Glitch / Corruption", "min": -100, "max": 100, "step": 1, "default": 8, "neutral": 8, "param": true },
+
+  { "id": "time_pixel", "label": "time_pixel (intensity)", "group": "Temporal / Motion", "min": 0, "max": 1, "step": 0.01, "default": 0, "neutral": 0 },
+  { "id": "time_pixel_bands", "label": "time_pixel band_count", "group": "Temporal / Motion", "min": 1, "max": 32, "step": 1, "default": 8, "neutral": 8, "param": true },
+  { "id": "pixel_sort_threshold", "label": "pixel_sort_threshold", "group": "Temporal / Motion", "min": 0, "max": 255, "step": 1, "default": 0, "neutral": 0 },
+  { "id": "pixel_sort_direction", "label": "pixel_sort_direction (vertical)", "group": "Temporal / Motion", "type": "checkbox", "default": 0, "neutral": 0, "param": true },
+  { "id": "frame_blend", "label": "frame_blend", "group": "Temporal / Motion", "min": 0, "max": 1, "step": 0.01, "default": 0, "neutral": 0 },
+
+  { "id": "datamosh_blocks", "label": "datamosh_blocks", "group": "Datamosh", "min": 0, "max": 1, "step": 0.01, "default": 0, "neutral": 0 },
+  { "id": "datamosh_block_size", "label": "datamosh_block_size (px)", "group": "Datamosh", "min": 4, "max": 64, "step": 1, "default": 16, "neutral": 16, "param": true },
+  { "id": "datamosh_direction_x", "label": "datamosh_direction_x", "group": "Datamosh", "min": -50, "max": 50, "step": 1, "default": 0, "neutral": 0, "param": true },
+  { "id": "datamosh_direction_y", "label": "datamosh_direction_y", "group": "Datamosh", "min": -50, "max": 50, "step": 1, "default": 0, "neutral": 0, "param": true },
+  { "id": "datamosh_decay", "label": "datamosh_decay", "group": "Datamosh", "min": 0, "max": 1, "step": 0.01, "default": 0, "neutral": 0, "param": true },
+
+  { "id": "zoom", "label": "zoom (x)", "group": "Geometry", "min": 0.5, "max": 3, "step": 0.01, "default": 1, "neutral": 1 },
+  { "id": "rotate", "label": "rotate (°)", "group": "Geometry", "min": 0, "max": 360, "step": 1, "default": 0, "neutral": 0 },
+  { "id": "mirror_x", "label": "mirror_x", "group": "Geometry", "min": 0, "max": 1, "step": 0.01, "default": 0, "neutral": 0 },
+  { "id": "mirror_y", "label": "mirror_y", "group": "Geometry", "min": 0, "max": 1, "step": 0.01, "default": 0, "neutral": 0 },
+  { "id": "wave_warp", "label": "wave_warp (amp px)", "group": "Geometry", "min": 0, "max": 80, "step": 1, "default": 0, "neutral": 0 },
+  { "id": "wave_warp_freq", "label": "wave_warp_freq", "group": "Geometry", "min": 1, "max": 20, "step": 1, "default": 4, "neutral": 4, "param": true }
+]

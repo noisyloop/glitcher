@@ -9,8 +9,11 @@
  * uploads — there is no attack surface for user-supplied data on the server.
  */
 
-const path = require('path');
-const express = require('express');
+import path from 'path';
+import { fileURLToPath } from 'url';
+import express from 'express';
+
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 const app = express();
 const PORT = process.env.PORT || 3000;
