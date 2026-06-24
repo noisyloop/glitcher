@@ -1,0 +1,51 @@
+# glitcher
+
+A browser-based image glitch tool with a dark terminal aesthetic. All image
+processing happens **entirely in your browser** via the Canvas API — the
+Node/Express server only serves static files.
+
+## Run
+
+```bash
+npm install
+node server.js
+# open http://localhost:3000
+```
+
+## Use
+
+1. **▶ IMPORT** a JPG or PNG (left panel).
+2. Drag the sliders in the right panel — the OUTPUT preview updates live.
+3. **⚄ RANDOMIZE ALL** for chaos, **⟲ RESET ALL** to return to neutral.
+4. **▼ EXPORT PNG** renders the full pipeline at native resolution and
+   downloads `glitch_<timestamp>.png`.
+
+## Effects
+
+Sliders are grouped: **Pixel/Color**, **Scan/Raster**, **Glitch/Corruption**,
+**Temporal/Motion**, **Datamosh**, and **Geometry**. Effects compose top-to-bottom
+in a pipeline; any slider at its neutral position is a no-op (kept fast).
+
+> **Datamosh tip:** the temporal P-frame smear only appears when `frame_blend > 0`,
+> since `datamosh_decay` bleeds the *previous* rendered frame through.
+
+## Architecture
+
+| File | Role |
+|------|------|
+| `server.js` | Minimal Express static server with strict CSP + security headers. |
+| `public/index.html` | Two-panel CSS-grid layout. |
+| `public/style.css` | Phosphor-green-on-black terminal theme. |
+| `public/glitch.js` | One exported function per effect: `(imageData, value, …) => ImageData`. |
+| `public/main.js` | Builds the UI, runs the pipeline, handles import/export. |
+
+## Security notes
+
+Imported images are validated before decoding: reported MIME type is gated to
+`image/jpeg`/`image/png`, the file is size-capped (30 MB), and the real
+**magic bytes** are sniffed and must match the claimed type (defends against
+spoofed/renamed files). Decoding uses `createImageBitmap` (no DOM attachment,
+no SVG/script vectors), dimensions are clamped to bound memory/CPU, and all
+user-derived text (e.g. filenames) is rendered via `textContent`, never
+`innerHTML`. The server sends a strict Content-Security-Policy, rejects
+non-GET/HEAD methods, and serves only files under `public/`.

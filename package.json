@@ -1,0 +1,13 @@
+{
+  "name": "glitcher",
+  "version": "1.0.0",
+  "description": "Browser-based image glitch tool with a dark terminal aesthetic. All image processing happens in-browser via the Canvas API.",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.18.0"
+  }
+}
