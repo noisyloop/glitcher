@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="referrer" content="no-referrer">
+  <title>glitcher // image corruption terminal</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="topbar">
+    <span class="logo">▚ glitcher</span>
+    <span class="tagline">// browser-side image corruption terminal</span>
+    <span class="status" id="status">no signal</span>
+  </header>
+
+  <main class="layout">
+    <!-- LEFT PANEL: source / IO -->
+    <section class="panel panel-left">
+      <h2 class="panel-title">SOURCE</h2>
+
+      <div class="io-row">
+        <label class="btn" for="fileInput">▶ IMPORT</label>
+        <input id="fileInput" type="file" accept="image/jpeg,image/png" hidden>
+        <button class="btn" id="exportBtn" disabled>▼ EXPORT PNG</button>
+      </div>
+
+      <div class="meta" id="meta">awaiting image…</div>
+
+      <div class="preview-box">
+        <div class="preview-label">ORIGINAL</div>
+        <canvas id="originalCanvas" class="preview-canvas"></canvas>
+      </div>
+
+      <div class="preview-box">
+        <div class="preview-label">OUTPUT</div>
+        <canvas id="outputCanvas" class="preview-canvas"></canvas>
+      </div>
+    </section>
+
+    <!-- RIGHT PANEL: controls -->
+    <section class="panel panel-right">
+      <div class="controls-head">
+        <h2 class="panel-title">EFFECTS</h2>
+        <div class="controls-actions">
+          <button class="btn btn-sm" id="randomizeBtn">⚄ RANDOMIZE ALL</button>
+          <button class="btn btn-sm" id="resetBtn">⟲ RESET ALL</button>
+        </div>
+      </div>
+      <div class="controls-scroll" id="controls"><!-- sliders injected by main.js --></div>
+    </section>
+  </main>
+
+  <!-- glitch.js exports effect functions; main.js wires UI + pipeline -->
+  <script type="module" src="main.js"></script>
+</body>
+</html>
