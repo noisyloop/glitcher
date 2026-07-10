@@ -9,7 +9,7 @@
 
 import { initUI, setStatus } from './ui.js';
 import { runPipeline, resetPipelineState } from './pipeline.js';
-import { initImport, initExport, drawOutput } from './io.js';
+import { initImport, initExport, initExport3D, drawOutput } from './io.js';
 import { EFFECTS_CONFIG } from './config.js';
 import { startAnimation, stopAnimation } from './animate.js';
 import { startRecording, stopRecording } from './recorder.js';
@@ -106,6 +106,14 @@ initExport(async () => {
   if (!sourceImageData) return null;
   // export exactly what the user sees; render once if nothing is cached yet
   return lastResult || (await render());
+});
+
+initExport3D(async () => {
+  if (!sourceImageData) return null;
+  const imageData = lastResult || (await render());
+  if (!imageData) return null;
+  // one voxel per pixelate block, so the 3D object matches the preview grid
+  return { imageData, blockSize: ui.getValues().pixelate };
 });
 
 // --- wire WebM randomizer ---

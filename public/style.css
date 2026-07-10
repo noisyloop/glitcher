@@ -113,6 +113,22 @@ body {
 .io-row { display: flex; gap: 8px; margin-bottom: 10px; }
 .io-row .btn { flex: 1; }
 
+/* dropdowns (3D export mode) — styled to match .btn */
+.select {
+  flex: 1;
+  min-width: 0;
+  background: var(--bg-input);
+  color: var(--fg);
+  border: 1px solid var(--accent-dim);
+  padding: 7px 8px;
+  font-family: var(--font);
+  font-size: 11px;
+  letter-spacing: 1px;
+  cursor: pointer;
+}
+.select:hover { background: #0c1f0c; color: var(--accent); }
+.select option { background: var(--bg-input); color: var(--fg); }
+
 .meta {
   font-size: 11px;
   color: var(--fg-dim);
