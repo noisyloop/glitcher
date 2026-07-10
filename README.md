@@ -19,6 +19,17 @@ node server.js
 3. **⚄ RANDOMIZE ALL** for chaos, **⟲ RESET ALL** to return to neutral.
 4. **▼ EXPORT PNG** renders the full pipeline at native resolution and
    downloads `glitch_<timestamp>.png`.
+5. **▼ EXPORT 3D (GLB)** turns the output into a voxel 3D object
+   (`glitch3d_<timestamp>.glb`). Crank up **pixelate** first — every pixel
+   block becomes one voxel column. Two styles via the dropdown:
+   - **minecraft blocks** — brighter blocks extrude taller, producing a
+     voxel relief.
+   - **flat tiles** — every block is a 1-unit tile: a flat pixel-art slab.
+
+   Colors are baked in as vertex colors, and the binary glTF (`.glb`) opens
+   ready-colored in Blender, three.js, and the built-in Windows/macOS 3D
+   viewers. Transparent pixels are skipped, so PNGs with alpha become
+   cut-out shapes.
 
 ## Effects
 
@@ -44,7 +55,8 @@ source of truth for what effects exist (id, label, group, range, neutral value).
 | `public/js/config.js` | Loads `effects.json` and exposes it to ui + pipeline. |
 | `public/js/pipeline.js` | `runPipeline(source, values)` — applies effects in order, skipping neutrals. |
 | `public/js/ui.js` | Slider rendering, value tracking, Randomize/Reset. Knows nothing about Canvas. |
-| `public/js/io.js` | Hardened image import, source/output canvases, PNG export. Knows nothing about sliders. |
+| `public/js/io.js` | Hardened image import, source/output canvases, PNG + GLB export. Knows nothing about sliders. |
+| `public/js/export3d.js` | Pure ImageData→voxel-mesh→binary glTF (.glb) converter used by the 3D export. No DOM, no dependencies. |
 | `public/js/effects/*.js` | One file per category; one exported function per effect. `index.js` re-exports a flat map. |
 
 ## Security notes
